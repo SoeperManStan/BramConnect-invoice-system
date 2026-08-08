@@ -15,11 +15,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+          cache: 'npm'
       
-      - name: Install ajv-cli
-        run: npm install -g ajv-cli
-      
-      - name: Validate examples
+      - name: Show node + npm
         run: |
-          ajv validate -s schema/invoice.v1.json -d examples/dj-minimal.json
-          ajv validate -s schema/invoice.v1.json -d examples/dj-full.json
+          node -v
+          npm -v
+      
+      - name: Validate examples (pinned @ajv/cli via npx)
+        run: |
+          npx -y @ajv/cli@4.0.0 --version
+          npx -y @ajv/cli@4.0.0 validate -s schema/invoice.v1.json -d "examples/*.json"
