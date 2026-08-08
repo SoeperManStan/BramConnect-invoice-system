@@ -1,0 +1,6 @@
+name: Validate invoice examples
+
+on:
+  push:
+    paths:
+      - 'examples/**'
