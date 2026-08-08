@@ -4,3 +4,22 @@ on:
   push:
     paths:
       - 'examples/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Install ajv-cli
+        run: npm install -g ajv-cli
+      
+      - name: Validate examples
+        run: |
+          ajv validate -s schema/invoice.v1.json -d examples/dj-minimal.json
+          ajv validate -s schema/invoice.v1.json -d examples/dj-full.json
