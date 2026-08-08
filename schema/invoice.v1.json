@@ -1,0 +1,324 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BramConnect Invoice Schema v1.0",
+  "description": "Modular invoice schema for DJ, Workshop, Storytelling, Speaker, and OvenUnlocker services",
+  "version": "1.0.0",
+  "type": "object",
+  "required": [
+    "invoice_id",
+    "issue_date",
+    "due_date",
+    "currency",
+    "client",
+    "items",
+    "totals",
+    "service_type",
+    "company"
+  ],
+  "properties": {
+    "invoice_id": {
+      "type": "string",
+      "pattern": "^SS-[0-9]{4}-[A-Z]{2}-[0-9]{4}$",
+      "description": "Unique invoice number (SS-2606-DJ-0150 format)"
+    },
+    "version": {
+      "type": "string",
+      "default": "1.0.0",
+      "description": "Schema version for tracking updates"
+    },
+    "issue_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Invoice date (ISO 8601: YYYY-MM-DD)"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Payment due date (ISO 8601: YYYY-MM-DD)"
+    },
+    "payment_terms_days": {
+      "type": "integer",
+      "enum": [14, 30],
+      "default": 14,
+      "description": "Payment term in working days (14 for network/friends, 30 for corporate)"
+    },
+    "currency": {
+      "type": "string",
+      "enum": ["EUR", "USD"],
+      "default": "EUR"
+    },
+    "service_type": {
+      "type": "string",
+      "enum": ["dj", "workshop", "storytelling", "speaker", "oven_unlocker"],
+      "description": "Service category (extensible registry in brand_registry.json)"
+    },
+    "company": {
+      "type": "object",
+      "required": ["name", "kvk", "iban"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "default": "BramConnect"
+        },
+        "kvk": {
+          "type": "string",
+          "pattern": "^[0-9]{8}$",
+          "default": "63722143"
+        },
+        "btw": {
+          "type": "string",
+          "pattern": "^NL[0-9]{12}B[0-9]{2}$",
+          "default": "NL198196593B03"
+        },
+        "iban": {
+          "type": "string",
+          "pattern": "^NL[0-9]{2}[A-Z]{4}[0-9]{10}$",
+          "default": "NL33KNAB0775080624"
+        },
+        "address": {
+          "type": "string",
+          "default": "Billitonstraat 17, 1094BC Amsterdam"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "default": "contact@soepensoul.nl"
+        },
+        "phone": {
+          "type": "string",
+          "default": "+31 6 16146110"
+        },
+        "website": {
+          "type": "string",
+          "default": "www.soepensoul.nl"
+        },
+        "tax_status": {
+          "type": "string",
+          "default": "Vrijgesteld KOR artikel 23"
+        }
+      }
+    },
+    "client": {
+      "type": "object",
+      "required": ["cid", "name", "address"],
+      "properties": {
+        "cid": {
+          "type": "string",
+          "description": "Unique client identifier (e.g., 'chicago-social-001')"
+        },
+        "name": {
+          "type": "string",
+          "description": "Client/company name"
+        },
+        "attn": {
+          "type": "string",
+          "description": "Attention (T.a.v. Pieter de Kroon)"
+        },
+        "address": {
+          "type": "string",
+          "description": "Street address"
+        },
+        "city": {
+          "type": "string",
+          "description": "City (e.g., Amsterdam)"
+        },
+        "postal_code": {
+          "type": "string",
+          "description": "Postal code (e.g., 1017 PT)"
+        },
+        "country": {
+          "type": "string",
+          "default": "Netherlands"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "phone": {
+          "type": "string"
+        }
+      }
+    },
+    "event": {
+      "type": "object",
+      "description": "Event details (used for narrative in DJ, Workshop, etc.)",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Event name (e.g., 'G.O.D — The Good Old Days')"
+        },
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "Event date (ISO 8601)"
+        },
+        "time": {
+          "type": "string",
+          "description": "Event time range (e.g., '22:00–04:00')"
+        },
+        "location": {
+          "type": "string",
+          "description": "Event venue"
+        },
+        "artist_name": {
+          "type": "string",
+          "description": "DJ/artist/speaker name (e.g., 'Mr FunkeyFresh')"
+        },
+        "memorable_details": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "3-4 key moments for narrative (e.g., ['crowd went static to dancing', 'beach vibe by waterside', 'retro flow 4 decades'])"
+        }
+      }
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Line items (services delivered)",
+      "items": {
+        "type": "object",
+        "required": ["description", "qty", "unit_price"],
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Service description (e.g., 'DJ Audio Curation')"
+          },
+          "qty": {
+            "type": "number",
+            "minimum": 0.5,
+            "description": "Quantity (hours, count, or 1 for fixed-fee)"
+          },
+          "unit": {
+            "type": "string",
+            "enum": ["uur", "stuks", "forfait"],
+            "default": "uur"
+          },
+          "unit_price": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Price per unit (€/uur, €/stuks, €/forfait)"
+          },
+          "line_total": {
+            "type": "number",
+            "description": "qty × unit_price (auto-calculated, read-only)"
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Optional extra details (e.g., theme, package type)"
+          }
+        }
+      }
+    },
+    "totals": {
+      "type": "object",
+      "required": ["subtotal", "tax", "total"],
+      "properties": {
+        "subtotal": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Sum of line_total items"
+        },
+        "tax": {
+          "type": "number",
+          "default": 0,
+          "description": "Tax amount (0 for KOR-exempt)"
+        },
+        "tax_rate": {
+          "type": "number",
+          "default": 0,
+          "description": "Tax percentage (0 for KOR)"
+        },
+        "total": {
+          "type": "number",
+          "minimum": 0,
+          "description": "subtotal + tax (final amount due)"
+        }
+      }
+    },
+    "narrative": {
+      "type": "object",
+      "description": "Poetic/professional narrative section (varies by service_type)",
+      "properties": {
+        "section_title": {
+          "type": "string",
+          "description": "Section header (e.g., 'DE ERVARING', 'DE WORKSHOP', 'DE BOODSCHAP')"
+        },
+        "body": {
+          "type": "string",
+          "description": "Poetic/professional narrative (5-10 sentences)"
+        },
+        "tone": {
+          "type": "string",
+          "description": "Tone guide (e.g., '60-poetic-20-urban-10-edgy-10-corporate')"
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional internal/external notes"
+    },
+    "internal_id": {
+      "type": "string",
+      "description": "Internal tracking ID (optional, for Make.com/Replit integration)"
+    },
+    "discount": {
+      "type": "object",
+      "description": "Optional discount (rare, for future use)",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["percentage", "fixed"]
+        },
+        "value": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "logo_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Company logo URL (optional, defaults to brand_registry)"
+    }
+  },
+  "additionalProperties": false,
+  "examples": [
+    {
+      "invoice_id": "SS-2606-DJ-0150",
+      "issue_date": "2026-06-28",
+      "due_date": "2026-07-12",
+      "currency": "EUR",
+      "service_type": "dj",
+      "company": {
+        "name": "BramConnect",
+        "kvk": "63722143",
+        "iban": "NL33KNAB0775080624"
+      },
+      "client": {
+        "cid": "chicago-001",
+        "name": "Chicago Social Club",
+        "attn": "Pieter de Kroon",
+        "address": "Leidseplein 12",
+        "city": "Amsterdam",
+        "postal_code": "1017 PT",
+        "email": "pieterdekroon@gmail.com"
+      },
+      "items": [
+        {
+          "description": "DJ Audio Curation",
+          "qty": 2,
+          "unit": "uur",
+          "unit_price": 75.0,
+          "line_total": 150.0
+        }
+      ],
+      "totals": {
+        "subtotal": 150.0,
+        "tax": 0,
+        "total": 150.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "version": "1.0.0",
+  "description": "Centralized brand configuration per service_type — used by templates and automation",
+  "dj": {
+    "label": "DJ Audio Curation",
+    "narrative_template": "DE ERVARING",
+    "color_primary": "#6B2D91",
+    "color_secondary": "#F39C12",
+    "visual_accent": "vinyl_record",
+    "visual_description": "Vinyl record watermark (turntable/Technics SL aesthetic)",
+    "tone_voice": "60-poetic-20-urban-10-edgy-10-corporate",
+    "pricing_model": "hourly",
+    "pricing_network": 75.0,
+    "pricing_corporate_min": 125.0,
+    "pricing_corporate_max": 175.0,
+    "minimum_hours": 2,
+    "payment_terms_days": 14,
+    "hero_text": "Audio Curation für vier Jahrzehnte Groove",
+    "footer_tagline": "Muziek verbindt. Wij creëren de herinnering.",
+    "css_partial": "/* DJ-specific styles */\n:root {\n  --primary: #6B2D91;\n  --secondary: #F39C12;\n  --vinyl-opacity: 0.15;\n}"
+  },
+  "workshop": {
+    "label": "Culinary Workshop",
+    "narrative_template": "DE WORKSHOP",
+    "color_primary": "#27AE60",
+    "color_secondary": "#F39C12",
+    "visual_accent": "soup_bowl",
+    "visual_description": "Soup bowl graphic or culinary illustration",
+    "tone_voice": "60-poetic-20-educational-10-inclusive-10-professional",
+    "pricing_model": "fixed_fee_per_group",
+    "pricing_base": 1250.0,
+    "pricing_max": 1800.0,
+    "group_size_max": 15,
+    "payment_terms_days": 14,
+    "hero_text": "Leer de kunst van soulvolle gastronomie",
+    "footer_tagline": "Soep en Soul. Smaken die verbinden.",
+    "css_partial": "/* Workshop-specific styles */\n:root {\n  --primary: #27AE60;\n  --secondary: #F39C12;\n  --bowl-opacity: 0.12;\n}"
+  },
+  "storytelling": {
+    "label": "Narrative Experience",
+    "narrative_template": "DE BOODSCHAP",
+    "color_primary": "#F39C12",
+    "color_secondary": "#6B2D91",
+    "visual_accent": "narrative_timeline",
+    "visual_description": "Book, microphone, or timeline visual based on topic",
+    "tone_voice": "60-narrative-driven-20-insightful-20-professional",
+    "pricing_model": "fixed_fee_per_narrative",
+    "pricing_tiers": {
+      "recipe_story": "pricing_base_recipe",
+      "ai_automation_story": "pricing_premium"
+    },
+    "pricing_base_recipe": 500.0,
+    "pricing_premium": 1200.0,
+    "payment_terms_days": 14,
+    "hero_text": "Verhalen die inspireren en verbinden",
+    "footer_tagline": "Elke verhaal draagt betekenis.",
+    "css_partial": "/* Storytelling-specific styles */\n:root {\n  --primary: #F39C12;\n  --secondary: #6B2D91;\n  --narrative-opacity: 0.1;\n}"
+  },
+  "speaker": {
+    "label": "Speaking Engagement",
+    "narrative_template": "DE IMPACT",
+    "color_primary": "#6B2D91",
+    "color_secondary": "#27AE60",
+    "visual_accent": "microphone_stage",
+    "visual_description": "Microphone or speaker stage visual",
+    "tone_voice": "60-professional-20-inspirational-20-accessible",
+    "pricing_model": "fixed_fee_per_event",
+    "payment_terms_days": 14,
+    "topics": [
+      "AI & Automation",
+      "Food & Sustainability",
+      "Community Building"
+    ],
+    "hero_text": "Spreker voor onvergetelijke events",
+    "footer_tagline": "Woorden die werken.",
+    "css_partial": "/* Speaker-specific styles */\n:root {\n  --primary: #6B2D91;\n  --secondary: #27AE60;\n  --stage-opacity: 0.12;\n}"
+  },
+  "oven_unlocker": {
+    "label": "Oven Unlocker Product",
+    "narrative_template": "DE SCAN",
+    "color_primary": "#6B2D91",
+    "color_secondary": "#F39C12",
+    "visual_accent": "oven_silhouette",
+    "visual_description": "Oven outline or appliance graphic",
+    "tone_voice": "60-poetic-20-technical-10-playful-10-professional",
+    "pricing_model": "fixed_fee_per_scan",
+    "pricing_testphase": 1.98,
+    "pricing_freemium": 4.95,
+    "pricing_annual": 39.0,
+    "payment_terms_days": 0,
+    "hero_text": "De ovenflüsteraar — wij vertalen wat jouw oven zegt",
+    "footer_tagline": "Je oven, ontsluisterd.",
+    "css_partial": "/* Oven Unlocker-specific styles */\n:root {\n  --primary: #6B2D91;\n  --secondary: #F39C12;\n  --oven-opacity: 0.15;\n}"
+  },
+  "global": {
+    "company_name": "BramConnect",
+    "company_tagline": "Curatie. Connectie. Cultuur.",
+    "brand_font_serif": "Playfair Display",
+    "brand_font_sans": "DM Sans",
+    "brand_colors": {
+      "purple": "#6B2D91",
+      "orange": "#F39C12",
+      "green": "#27AE60"
+    },
+    "footer_text": "MUZIEK VERBINDT. WIJ CREËREN DE HERINNERING.",
+    "payment_footer": "Betaal a.u.b. voor vervaldatum",
+    "tax_notice": "Vrijgesteld van BTW volgens artikel 23, lid 1, KOR"
+  }
+}

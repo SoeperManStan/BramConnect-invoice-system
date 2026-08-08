@@ -1,0 +1,68 @@
+{
+  "invoice_id": "SS-2606-DJ-0150",
+  "version": "1.0.0",
+  "issue_date": "2026-06-28",
+  "due_date": "2026-07-12",
+  "payment_terms_days": 14,
+  "currency": "EUR",
+  "service_type": "dj",
+  "company": {
+    "name": "BramConnect",
+    "kvk": "63722143",
+    "btw": "NL198196593B03",
+    "iban": "NL33KNAB0775080624",
+    "address": "Billitonstraat 17, 1094BC Amsterdam",
+    "email": "contact@soepensoul.nl",
+    "phone": "+31 6 16146110",
+    "website": "www.soepensoul.nl",
+    "tax_status": "Vrijgesteld KOR artikel 23"
+  },
+  "client": {
+    "cid": "chicago-001",
+    "name": "Chicago Social Club",
+    "attn": "Pieter de Kroon",
+    "address": "Leidseplein 12",
+    "city": "Amsterdam",
+    "postal_code": "1017 PT",
+    "country": "Netherlands",
+    "email": "pieterdekroon@gmail.com"
+  },
+  "event": {
+    "name": "G.O.D — The Good Old Days",
+    "date": "2026-06-28",
+    "time": "22:00–04:00",
+    "location": "HANGAR, Amsterdam Noord",
+    "artist_name": "Mr FunkeyFresh",
+    "memorable_details": [
+      "Crowd went from static to dancing (disco → funk → house)",
+      "Beach vibe along the waterside — drankjes en dezelfde energie",
+      "Retro vibes through four decades",
+      "People felt the music, vibe, and each other"
+    ]
+  },
+  "items": [
+    {
+      "description": "DJ Audio Curation",
+      "qty": 2,
+      "unit": "uur",
+      "unit_price": 75.0,
+      "line_total": 150.0,
+      "metadata": {
+        "experience": "Retro experience mix, baromzet-aware liedkeuze, 4-decennia flow"
+      }
+    }
+  ],
+  "totals": {
+    "subtotal": 150.0,
+    "tax": 0,
+    "tax_rate": 0,
+    "total": 150.0
+  },
+  "narrative": {
+    "section_title": "DE ERVARING",
+    "body": "De dansvloer vulde zich als een glas dat langzaam overloopt. Vijf uur voorbereiding, één beat — en de crowd ging van statisch naar dansend. Disco naar Funk, Dance naar House. Retro vibes die door vier decennia snijden. Langs de kade: drankjes en dezelfde energie. Niet op de dansvloer, maar onderdeel van dezelfde beleving — net een strand waar iedereen muziek, vibe en elkaar voelt.",
+    "tone": "60-poetic-20-urban-10-edgy-10-corporate"
+  },
+  "internal_id": "event_god_28jun2026",
+  "notes": "Vriendendienst tarief (€75/uur). Reusable template voor toekomstige DJ-facturen."
+}

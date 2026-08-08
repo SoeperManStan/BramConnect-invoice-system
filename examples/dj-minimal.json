@@ -1,0 +1,33 @@
+{
+  "invoice_id": "SS-2606-DJ-0150",
+  "issue_date": "2026-06-28",
+  "due_date": "2026-07-12",
+  "currency": "EUR",
+  "service_type": "dj",
+  "company": {
+    "name": "BramConnect",
+    "kvk": "63722143",
+    "btw": "NL198196593B03",
+    "iban": "NL33KNAB0775080624",
+    "email": "contact@soepensoul.nl"
+  },
+  "client": {
+    "cid": "chicago-001",
+    "name": "Chicago Social Club",
+    "address": "Leidseplein 12, 1017 PT Amsterdam"
+  },
+  "items": [
+    {
+      "description": "DJ Audio Curation",
+      "qty": 2,
+      "unit": "uur",
+      "unit_price": 75.0,
+      "line_total": 150.0
+    }
+  ],
+  "totals": {
+    "subtotal": 150.0,
+    "tax": 0,
+    "total": 150.0
+  }
+}
